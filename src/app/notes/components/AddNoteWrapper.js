@@ -22,14 +22,14 @@ const AddNoteWrapper = styled.div`
     }
 `;
 
-const StyledAddNoteWrapper = (props) => {
+const StyledAddNoteWrapper = ({ addNote }) => {
     const [content, setContent] = useState('');
 
     return (
         <AddNoteWrapper>
             <label>Add another:</label>
             <input type="text" placeholder="text for new note" value={content} onChange={({ target }) => setContent(target.value)}/>
-            <Button>Add</Button>
+            <Button onClick={() => content.trim() && addNote(content)}>Add</Button>
         </AddNoteWrapper>
     );
 };

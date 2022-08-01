@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 import Notes from './Notes';
-import { loadNotes }  from '../state';
+import { loadNotes, addNote }  from '../state';
 
 function mapStateToProps(state, ownProps) {
     return {
@@ -12,7 +12,10 @@ function mapDispatchToProps(dispatch, ownProps) {
     return {
         loadNotes: () => {
             dispatch(loadNotes());
-        }
+        },
+        addNote: (content) => {
+            dispatch(addNote(content));
+        },
     };
 }
 

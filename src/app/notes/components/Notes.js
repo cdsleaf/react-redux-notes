@@ -20,10 +20,10 @@ const Notes = styled.div`
     }
 `;
 
-const StyledNotes = (props) => {
+const StyledNotes = ({ notes, loadNotes, addNote }) => {
     useEffect(() => {
-        props.loadNotes();
-    }, []);
+        loadNotes();
+    }, [loadNotes]);
 
     return (
         <Notes>
@@ -31,9 +31,9 @@ const StyledNotes = (props) => {
                 <Title>Notes</Title>
                 <button id="themeToggle">Toggle theme</button>
             </header>
-            <AddNoteWrapper />
+            <AddNoteWrapper addNote={addNote} />
             {
-                Object.values(props.notes).map((note, i) => {
+                Object.values(notes).map((note, i) => {
                     return (
                         <Note
                           key={i}
