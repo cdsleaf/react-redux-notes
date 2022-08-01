@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 
 const Note = styled.div`
-    ${(props) => `background: ${ props.theme.noteBackgroundColor };`}
+    ${(props) => `background: ${ props.theme.noteBackground };`}
     ${(props) => `border: ${ props.theme.noteBorder };`}
     ${(props) => `color: ${ props.theme.pageText };`}
     ${(props) => `margin-bottom: ${ props.theme.space[3] }px;`}

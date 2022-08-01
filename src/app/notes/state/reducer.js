@@ -2,10 +2,12 @@ import {
     LOAD_NOTES,
     LOAD_NOTES_SUCCESS,
     ADD_NOTE_SUCCESS,
+    TOGGLE_THEME,
 } from './actions';
 
 const initialState = {
-    notes: {}
+    notes: {},
+    isDarkTheme: false,
 }
 
 export default function reducer(state = initialState, action) {
@@ -25,6 +27,11 @@ export default function reducer(state = initialState, action) {
                     ...state.notes,
                     [action.note.id]: action.note
                 },
+            }
+        case TOGGLE_THEME:
+            return {
+                ...state,
+                isDarkTheme: !state.isDarkTheme
             }
         default:
             return state;

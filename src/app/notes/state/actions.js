@@ -5,6 +5,13 @@ export const LOAD_NOTES = `${ns}LOAD_NOTES`;
 export const LOAD_NOTES_SUCCESS = `${ns}LOAD_NOTES_SUCCESS`;
 export const ADD_NOTE = `${ns}ADD_NOTE`;
 export const ADD_NOTE_SUCCESS = `${ns}ADD_NOTE_SUCCESS`;
+export const TOGGLE_THEME = 'TOGGLE_THEME';
+
+export function toggleTheme() {
+    return {
+        type: TOGGLE_THEME,
+    }
+}
 
 export function loadNotes() {
     return {

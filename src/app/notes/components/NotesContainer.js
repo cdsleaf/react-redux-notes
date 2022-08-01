@@ -1,10 +1,11 @@
 import { connect } from 'react-redux';
 import Notes from './Notes';
-import { loadNotes, addNote }  from '../state';
+import { loadNotes, addNote, toggleTheme }  from '../state';
 
 function mapStateToProps(state, ownProps) {
     return {
-        notes: state.notes
+        notes: state.notes,
+        isDarkTheme: state.isDarkTheme,
     };
 }
 
@@ -16,6 +17,9 @@ function mapDispatchToProps(dispatch, ownProps) {
         addNote: (content) => {
             dispatch(addNote(content));
         },
+        toggleTheme: () => {
+            dispatch(toggleTheme());
+        }
     };
 }
 

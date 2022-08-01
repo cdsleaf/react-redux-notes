@@ -1,16 +1,15 @@
 import React from 'react';
 import { Provider } from 'react-redux';
 import NotesContainer from './notes/components/NotesContainer';
-import { ThemeProvider } from 'styled-components';
+import DarkThemeProvider from './notes/components/DarkThemeProvider';
 import store from './store';
-import theme from './theme';
 
 const App = () => {
     return (
         <Provider store={store}>
-            <ThemeProvider theme={theme}>
+            <DarkThemeProvider>
                 <NotesContainer />
-            </ThemeProvider>
+            </DarkThemeProvider>
         </Provider>
     );
 }

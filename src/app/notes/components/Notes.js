@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import Note from './Note';
 import Title from './Title';
 import AddNoteWrapper from './AddNoteWrapper';
+import ThemeToggle from './ThemeToggle';
 import styled from 'styled-components';
 
 const Notes = styled.div`
@@ -20,7 +21,7 @@ const Notes = styled.div`
     }
 `;
 
-const StyledNotes = ({ notes, loadNotes, addNote }) => {
+const StyledNotes = ({ notes, loadNotes, addNote, isDarkTheme, toggleTheme }) => {
     useEffect(() => {
         loadNotes();
     }, [loadNotes]);
@@ -29,7 +30,7 @@ const StyledNotes = ({ notes, loadNotes, addNote }) => {
         <Notes>
             <header>
                 <Title>Notes</Title>
-                <button id="themeToggle">Toggle theme</button>
+                <ThemeToggle isDarkTheme={isDarkTheme} toggleTheme={toggleTheme}/>
             </header>
             <AddNoteWrapper addNote={addNote} />
             {
