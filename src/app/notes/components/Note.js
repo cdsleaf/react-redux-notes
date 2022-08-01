@@ -10,6 +10,9 @@ const Note = styled.div`
     ${(props) => `font-size: ${ props.theme.fontSizes.gamma }px;`}
     ${(props) => `border-bottom: ${ props.theme.noteBorderStyle };`}
     cursor: pointer;
+    &:hover {
+        ${(props) => `background: ${ props.theme.noteHoverBackground };`}
+    }
 `;
 
 const StyledNote = (props) => {
