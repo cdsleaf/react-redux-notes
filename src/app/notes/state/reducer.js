@@ -3,6 +3,7 @@ import {
     LOAD_NOTES_SUCCESS,
     ADD_NOTE_SUCCESS,
     DELETE_NOTE_SUCCESS,
+    UPDATE_NOTE_SUCCESS,
     TOGGLE_THEME,
 } from './actions';
 
@@ -35,6 +36,17 @@ export default function reducer(state = initialState, action) {
             return {
                 ...state,
                 notes,
+            }
+        case UPDATE_NOTE_SUCCESS:
+            return {
+                ...state,
+                notes: {
+                    ...state.notes,
+                    [action.note.id]: {
+                        ...state.notes[action.note.id],
+                        ...action.note,
+                    }
+                }
             }
         case TOGGLE_THEME:
             return {

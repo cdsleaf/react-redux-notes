@@ -1,6 +1,7 @@
 import {
     ADD_NOTE_SUCCESS,
     DELETE_NOTE_SUCCESS,
+    UPDATE_NOTE_SUCCESS,
     TOGGLE_THEME,
 } from './actions';
 import reducer from './reducer';
@@ -46,6 +47,28 @@ it('should handle DELETE_NOTE_SUCCESS', () => {
         ...defaultState,
         notes
     };
+
+    expect(reducer(defaultState, action)).toEqual(expectedState);
+});
+
+it('should handle UPDATE_NOTE_SUCCESS', () => {
+    const changedNote = {
+        id: 1,
+        text: 'changed text',
+    };
+
+    const action = {
+        type: UPDATE_NOTE_SUCCESS,
+        note: changedNote,
+    };
+
+    const expectedState = {
+        ...defaultState,
+        notes: {
+            ...defaultState.notes,
+            1: changedNote,
+        }
+    }
 
     expect(reducer(defaultState, action)).toEqual(expectedState);
 });

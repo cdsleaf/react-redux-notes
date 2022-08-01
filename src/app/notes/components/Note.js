@@ -1,6 +1,7 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 import Button from './Button';
+import { useDebounce } from '../hooks/useDebounce';
 
 const Note = styled.div`
     ${(props) => `background: ${ props.theme.noteBackground };`}
@@ -16,12 +17,30 @@ const Note = styled.div`
     &:hover {
         ${(props) => `background: ${ props.theme.noteHoverBackground };`}
     }
+    input {
+        width: calc(100% - 100px);
+        border: none;
+        background: transparent;
+
+        &:focus {
+            background: white;
+        }
+    }
 `;
 
-const StyledNote = ({ note, deleteNote }) => {
+const StyledNote = ({ note, deleteNote, updateNote }) => {
+    const [text, setText] = useState(note.text);
+    const [, setValues] = useDebounce(updateNote, 1000);    
+
+    const handleTextChange = ({ target }) => {
+        const text = target.value;
+        setText(text);
+        setValues({ ...note, text });
+    }
+
     return (
         <Note>
-            {note.text}
+            <input value={text} onChange={handleTextChange} />
             <Button onClick={() => deleteNote(note.id)}>Delete</Button>
         </Note>
     );
