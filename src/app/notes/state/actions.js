@@ -1,10 +1,12 @@
-import { loadNotesRequest, addNoteRequest } from './service';
+import { loadNotesRequest, addNoteRequest, deleteNoteRequest } from './service';
 
 const ns = 'notes/';
 export const LOAD_NOTES = `${ns}LOAD_NOTES`;
 export const LOAD_NOTES_SUCCESS = `${ns}LOAD_NOTES_SUCCESS`;
 export const ADD_NOTE = `${ns}ADD_NOTE`;
 export const ADD_NOTE_SUCCESS = `${ns}ADD_NOTE_SUCCESS`;
+export const DELETE_NOTE = `${ns}DELETE_NOTE`;
+export const DELETE_NOTE_SUCCESS = `${ns}DELETE_NOTE_SUCCESS`;
 export const TOGGLE_THEME = 'TOGGLE_THEME';
 
 export function toggleTheme() {
@@ -45,4 +47,21 @@ function addNoteSuccess(note) {
         type: ADD_NOTE_SUCCESS,
         note,
     };
+}
+
+export function deleteNote(id) {
+    return {
+        type: DELETE_NOTE,
+        noteOperation: {
+            request: deleteNoteRequest(id),
+            success: () => deleteNoteSuccess(id),
+        }
+    }
+}
+
+function deleteNoteSuccess(id) {
+    return {
+        type: DELETE_NOTE_SUCCESS,
+        id,
+    }
 }

@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 import Notes from './Notes';
-import { loadNotes, addNote, toggleTheme }  from '../state';
+import { loadNotes, addNote, deleteNote, toggleTheme }  from '../state';
 
 function mapStateToProps(state, ownProps) {
     return {
@@ -16,6 +16,9 @@ function mapDispatchToProps(dispatch, ownProps) {
         },
         addNote: (content) => {
             dispatch(addNote(content));
+        },
+        deleteNote: (id) => {
+            dispatch(deleteNote(id));
         },
         toggleTheme: () => {
             dispatch(toggleTheme());

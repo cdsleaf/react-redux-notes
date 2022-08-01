@@ -21,7 +21,7 @@ const Notes = styled.div`
     }
 `;
 
-const StyledNotes = ({ notes, loadNotes, addNote, isDarkTheme, toggleTheme }) => {
+const StyledNotes = ({ notes, loadNotes, addNote, deleteNote, isDarkTheme, toggleTheme }) => {
     useEffect(() => {
         loadNotes();
     }, [loadNotes]);
@@ -37,8 +37,9 @@ const StyledNotes = ({ notes, loadNotes, addNote, isDarkTheme, toggleTheme }) =>
                 Object.values(notes).map((note, i) => {
                     return (
                         <Note
-                          key={i}
-                          note={note}
+                            key={i}
+                            note={note}
+                            deleteNote={deleteNote}
                         />
                     );
                 })

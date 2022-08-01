@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import Button from './Button';
 
 const Note = styled.div`
     ${(props) => `background: ${ props.theme.noteBackground };`}
@@ -9,16 +10,19 @@ const Note = styled.div`
     ${(props) => `padding: ${ props.theme.space[3] }px 0;`}
     ${(props) => `font-size: ${ props.theme.fontSizes.gamma }px;`}
     ${(props) => `border-bottom: ${ props.theme.noteBorderStyle };`}
+    display: flex;
+    justify-content: space-between;
     cursor: pointer;
     &:hover {
         ${(props) => `background: ${ props.theme.noteHoverBackground };`}
     }
 `;
 
-const StyledNote = (props) => {
+const StyledNote = ({ note, deleteNote }) => {
     return (
         <Note>
-            {props.note.text}
+            {note.text}
+            <Button onClick={() => deleteNote(note.id)}>Delete</Button>
         </Note>
     );
 };

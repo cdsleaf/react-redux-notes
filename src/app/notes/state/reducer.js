@@ -2,6 +2,7 @@ import {
     LOAD_NOTES,
     LOAD_NOTES_SUCCESS,
     ADD_NOTE_SUCCESS,
+    DELETE_NOTE_SUCCESS,
     TOGGLE_THEME,
 } from './actions';
 
@@ -27,6 +28,13 @@ export default function reducer(state = initialState, action) {
                     ...state.notes,
                     [action.note.id]: action.note
                 },
+            }
+        case DELETE_NOTE_SUCCESS:
+            const notes = { ...state.notes };
+            delete notes[action.id];
+            return {
+                ...state,
+                notes,
             }
         case TOGGLE_THEME:
             return {
